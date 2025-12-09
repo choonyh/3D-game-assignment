@@ -279,7 +279,7 @@ MonoBehaviour:
   groundDistance: 0.2
   groundMask:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 0
 --- !u!114 &1035378380109178156
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -296,7 +296,7 @@ MonoBehaviour:
   objectGrabPoint: {fileID: 4570882647589980205}
   pickUpLayerMask:
     serializedVersion: 2
-    m_Bits: 118
+    m_Bits: 54
 --- !u!1 &4780291618099483814
 GameObject:
   m_ObjectHideFlags: 0
