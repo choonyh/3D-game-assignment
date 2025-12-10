@@ -49,6 +49,8 @@ public class UIManager : MonoBehaviour
 
     public void BackClicked()
     {
+        
+        Debug.Log("Hello");
         levelToLoad = 1;
         transition();
     }

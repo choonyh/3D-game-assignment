@@ -20,9 +20,9 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        isBottom = Physics.CheckSphere(groundCheck.position, groundDistance , groundMask);
+        isBottom = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
 
-        if(isBottom && velocity.y < 0)
+        if (isBottom && velocity.y < 0)
         {
             velocity.y = -2f;
         }
@@ -30,14 +30,21 @@ public class PlayerMovement : MonoBehaviour
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");
 
-        Vector3 move = transform.right * x +transform.forward * z;
+        Vector3 move = transform.right * x + transform.forward * z;
 
-        characterController.Move(move * speed *Time.deltaTime);
+        characterController.Move(move * speed * Time.deltaTime);
 
         if (Input.GetButton("Jump") && isBottom)
         {
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
         }
+
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            speed = 20;
+        }
+        else
+            speed = 5;
 
         velocity.y += gravity * Time.deltaTime;
 

@@ -1,24 +1,28 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class LookAroundScript : MonoBehaviour
 {
-    [SerializeField] private float mouseSensitivity = 250f;
+    public float sensitivity;
     public Transform playerBody;
     private float xRotation=0f;
 
     // Start is called before the first frame update
     void Start()
     {
+        SettingManager.instance.LoadSettings();
         Cursor.lockState = CursorLockMode.Locked;
+        sensitivity = Mathf.RoundToInt(SettingManager.instance.cameraSensitivity * 100);
     }
 
     // Update is called once per frame
     void Update()
     {
-        float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime * 2;
-        float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime * 2;
+        
+        float mouseX = Input.GetAxis("Mouse X") * sensitivity * Time.deltaTime * 2;
+        float mouseY = Input.GetAxis("Mouse Y") * sensitivity * Time.deltaTime * 2;
 
         xRotation -= mouseY;
         xRotation = Mathf.Clamp(xRotation, -90f, 90f);

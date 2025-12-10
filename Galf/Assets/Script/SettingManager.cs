@@ -1,16 +1,45 @@
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class SettingManager : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public static SettingManager instance;
+    public AudioMixer mixer;
+
+    public float musicVolume = 1f;
+    public float sfxVolume = 1f;
+    public float cameraSensitivity = 250f;
+
+    void Awake()
     {
-        
+        if (instance == null)
+        {
+            instance = this;
+            
+            DontDestroyOnLoad(gameObject);
+            LoadSettings();
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    public void LoadSettings()
     {
-        
+        musicVolume = PlayerPrefs.GetFloat("MusicVolume", 1f);
+        sfxVolume = PlayerPrefs.GetFloat("SfxVolume", 1f);
+        cameraSensitivity = PlayerPrefs.GetFloat("CamSensitivity", 250f);
+    }
+
+    public void SaveSettings()
+    {
+        PlayerPrefs.SetFloat("MusicVolume", musicVolume);
+        PlayerPrefs.SetFloat("SfxVolume", sfxVolume);
+        PlayerPrefs.SetFloat("CamSensitivity", cameraSensitivity);
+    }
+
+    public void ApplySettingOnStart()
+    {
+        mixer.SetFloat("MusicVolume", Mathf.Log10(SettingManager.instance.musicVolume) * 20);
+        mixer.SetFloat("SfxVolume", Mathf.Log10(SettingManager.instance.sfxVolume) * 20);
+
     }
 }
+
