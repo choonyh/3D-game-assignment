@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
-
+[RequireComponent(typeof(AudioSource))]
 public class PlayerCollision : MonoBehaviour
 {
     private bool doorIsOpen = false;
@@ -9,6 +9,7 @@ public class PlayerCollision : MonoBehaviour
     public float doorOpenTime = 3.0f;
     public AudioClip doorOpenSound;
     public AudioClip doorShutSound;
+    
 
     void Door(AudioClip aClip, bool openCheck, string animName, GameObject thisDoor)
     {
@@ -16,7 +17,7 @@ public class PlayerCollision : MonoBehaviour
         audio.clip = aClip;
         audio.Play();
         doorIsOpen = openCheck;
-        thisDoor.transform.parent.GetComponent<Animation>().Play(animName);
+        thisDoor.transform.GetComponent<Animation>().Play(animName);
     }
 
     void Update()
@@ -34,6 +35,7 @@ public class PlayerCollision : MonoBehaviour
         if (doorIsOpen)
         {
             doorTimer += Time.deltaTime;
+
             if (doorTimer > doorOpenTime)
             {
                 Door(doorShutSound, false, "doorShut", currentDoor);
