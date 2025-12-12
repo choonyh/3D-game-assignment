@@ -12,8 +12,8 @@ public class LookAroundScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        SettingManager.instance.LoadSettings();
         Cursor.lockState = CursorLockMode.Locked;
+        SettingManager.instance.LoadSettings();
         sensitivity = Mathf.RoundToInt(SettingManager.instance.cameraSensitivity * 100);
     }
 

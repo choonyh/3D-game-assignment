@@ -37,7 +37,7 @@ public class UIManager : MonoBehaviour
 
     public void PlayBtnClicked()
     {
-        levelToLoad = 0;
+        levelToLoad = 3;
         transition();
     }
 
