@@ -3819,6 +3819,7 @@ MonoBehaviour:
   groundMask:
     serializedVersion: 2
     m_Bits: 0
+  isTutorial: 0
 --- !u!143 &971367936
 CharacterController:
   m_ObjectHideFlags: 0

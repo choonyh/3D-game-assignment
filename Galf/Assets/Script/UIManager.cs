@@ -54,5 +54,5 @@ public class UIManager : MonoBehaviour
         levelToLoad = 1;
         transition();
     }
-
+    
 }

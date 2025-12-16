@@ -8,7 +8,7 @@ public class PlayerMovement : MonoBehaviour
 {
     public CharacterController characterController;
 
-    [SerializeField] private float speed = 10f;
+    [SerializeField] public float speed = 10f;
     [SerializeField] private float gravity = -9.81f;
     public float jumpHeight = 3f;
 
@@ -19,10 +19,19 @@ public class PlayerMovement : MonoBehaviour
 
     Vector3 velocity;
     bool isBottom;
+    public bool isTutorial;
+
+    private GameObject roket;
+
+    private void Start()
+    {
+        roket = GameObject.Find("Rocket Launcher");
+    }
 
     // Update is called once per frame
     void Update()
     {
+        roket.SetActive(true);
         isBottom = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
 
         if (isBottom && velocity.y < 0)
@@ -39,6 +48,15 @@ public class PlayerMovement : MonoBehaviour
 
         bool isMoving = (x != 0 || z != 0);
 
+        if (isTutorial)
+        { 
+            anim.SetBool("Idle", true);
+            anim.SetBool("Walk", false);
+            anim.SetBool("Run", false);
+            characterController.Move(Vector3.zero);
+            return;
+
+        }
         if (!isMoving)
         {
             anim.SetBool("Idle", true);
@@ -54,6 +72,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 speed = 20;
                 anim.SetBool("Run",true);
+                roket.SetActive(false);
                 anim.SetBool("Walk", false);
                 
             }

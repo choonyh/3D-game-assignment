@@ -1,7 +1,7 @@
 fileFormatVersion: 2
 guid: e1345f231bddd7a488397fb5ca71c0cb
 ModelImporter:
-  serializedVersion: 22200
+  serializedVersion: 24200
   internalIDToNameTable:
   - first:
       1: 100000
@@ -322,8 +322,6 @@ ModelImporter:
     optimizeGameObjects: 0
     removeConstantScaleCurves: 0
     motionNodeName: 
-    rigImportErrors: 
-    rigImportWarnings: 
     animationImportErrors: 
     animationImportWarnings: 
     animationRetargetingWarnings: 
@@ -451,6 +449,9 @@ ModelImporter:
     maxBonesPerVertex: 4
     minBoneWeight: 0.001
     optimizeBones: 1
+    generateMeshLods: 0
+    meshLodGenerationFlags: 0
+    maximumMeshLod: -1
     meshOptimizationFlags: -1
     indexFormat: 1
     secondaryUVAngleDistortion: 8
@@ -766,7 +767,8 @@ ModelImporter:
     - name: CATRToe2
       parentName: 
       position: {x: -0.022500006, y: 0, z: 0}
-      rotation: {x: -0.00000005860705, y: -0.00000008195636, z: 0.000000014901133, w: 0.99999994}
+      rotation: {x: -0.00000005860705, y: -0.00000008195636, z: 0.000000014901133,
+        w: 0.99999994}
       scale: {x: 1.0000001, y: 1, z: 1.0000001}
     - name: CATSpine1
       parentName: 
@@ -846,7 +848,8 @@ ModelImporter:
     - name: CATNeck
       parentName: 
       position: {x: -0.03662834, y: 0.0000000047683715, z: 0}
-      rotation: {x: -0.0000000011584231, y: 0.0000000038097174, z: 0.00000000372529, w: 0.99999994}
+      rotation: {x: -0.0000000011584231, y: 0.0000000038097174, z: 0.00000000372529,
+        w: 0.99999994}
       scale: {x: 1, y: 1, z: 1}
     - name: CATHead
       parentName: 
@@ -942,3 +945,10 @@ ModelImporter:
   userData: 
   assetBundleName: 
   assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 18098
+  packageName: 3 Free Characters
+  packageVersion: 1.0
+  assetPath: Assets/Animations/FreeCharacter/FreeCharacter_Mecanim.FBX
+  uploadId: 7008

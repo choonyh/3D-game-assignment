@@ -6,3 +6,10 @@ NativeFormatImporter:
   userData: 
   assetBundleName: 
   assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 18098
+  packageName: 3 Free Characters
+  packageVersion: 1.0
+  assetPath: Assets/Animations/FreeCharacter/Prefabs/NPC_Beard_008.prefab
+  uploadId: 7008

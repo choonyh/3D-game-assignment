@@ -2,6 +2,7 @@ using UnityEngine;
 using TMPro;
 using System.Collections;
 using UnityEngine.Playables;
+using UnityEngine.SceneManagement;
 
 public class DialougeBox : MonoBehaviour
 {
@@ -93,4 +94,15 @@ public class DialougeBox : MonoBehaviour
         StartDialogue();
     }
 
+    public void LoadTutorial()
+    {
+        StartCoroutine(Wait());
+    }
+
+    IEnumerator Wait()
+    {
+        yield return new WaitForSeconds(3.0f);
+        SceneManager.LoadScene(4);
+
+    }
 }
