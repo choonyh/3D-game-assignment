@@ -14,7 +14,7 @@ public class LookAroundScript : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Locked;
         SettingManager.instance.LoadSettings();
-        sensitivity = Mathf.RoundToInt(SettingManager.instance.cameraSensitivity * 100);
+        sensitivity = Mathf.RoundToInt(SettingManager.instance.cameraSensitivity);
     }
 
     // Update is called once per frame
