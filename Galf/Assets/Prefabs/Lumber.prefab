@@ -5998,7 +5998,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d85ee6e632590244da9e4e2d30282e16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AiMove
-  player: {fileID: 0}
+  player: {fileID: 3474530052267854374, guid: 0d5ba32ea3c759948b2cd496cea16d37, type: 3}
   detectionRadius: 5
   attackRadius: 1
   moveSpeed: 3
