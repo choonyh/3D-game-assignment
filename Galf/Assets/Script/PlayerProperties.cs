@@ -20,7 +20,7 @@ public class PlayerProperties : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        currentHP -= Mathf.Max(currentHP - damage,0);
+        currentHP = Mathf.Max(currentHP - damage,0);
         if (currentHP <= 0)
         {
             isLost = true;

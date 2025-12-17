@@ -23,7 +23,7 @@ public class Settings : MonoBehaviour
 
         musicText.text = Mathf.Round(SettingManager.instance.musicVolume*100).ToString();
         sfxText.text = Mathf.Round(SettingManager.instance.sfxVolume*100).ToString();
-        camText.text = Mathf.Round(SettingManager.instance.cameraSensitivity).ToString();
+        camText.text = Mathf.Round(SettingManager.instance.cameraSensitivity * 100).ToString();
 
         musicScrollbar.onValueChanged.AddListener(SetMusicVolume);
         sfxScrollbar.onValueChanged.AddListener(SetSfxVolume);
@@ -50,7 +50,7 @@ public class Settings : MonoBehaviour
     void SetCamSen(float value)
     {
         SettingManager.instance.cameraSensitivity = value;
-        camText.text = Mathf.RoundToInt(value*100).ToString();
+        camText.text = (value*100).ToString();
         SettingManager.instance.SaveSettings();
     }
    

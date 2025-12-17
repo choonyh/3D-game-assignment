@@ -6,54 +6,76 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public CharacterController characterController;
 
     [SerializeField] public float speed = 10f;
-    [SerializeField] private float gravity = -9.81f;
-    public float jumpHeight = 3f;
+    [SerializeField] public Transform orientation;
+    float horizontalInput;
+    float verticalInput;
+    Rigidbody rb;
+
+    public float playerHeight;
+    public LayerMask ground;
+    public bool isGround;
+    public float groundDrag;
 
     public Animator anim;
-    public Transform groundCheck;
-    public float groundDistance = 0.2f;
-    public LayerMask groundMask;
 
     Vector3 velocity;
-    bool isBottom;
     public bool isTutorial;
 
     private GameObject roket;
-
+    
+    //Move and then play animation
     private void Start()
     {
         roket = GameObject.Find("Rocket Launcher");
+        rb = GetComponent<Rigidbody>();
+        rb.freezeRotation = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        roket.SetActive(true);
-        isBottom = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
-
-        if (isBottom && velocity.y < 0)
+        isGround = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f, ground);
+        MyInput();
+        if (isGround)
         {
-            velocity.y = -2f;
+            rb.linearDamping = groundDrag;
         }
+        else
+            rb.linearDamping = 0;
+        PlayAnimation();
 
-        float x = Input.GetAxis("Horizontal");
-        float z = Input.GetAxis("Vertical");
+    }
+    private void FixedUpdate()
+    {
+        MovePlayer();
+      
+    }
+    private void MyInput()
+    { 
+        horizontalInput = Input.GetAxisRaw("Horizontal");
+        verticalInput = Input.GetAxisRaw("Vertical");
+    }
 
-        Vector3 move = transform.right * x + transform.forward * z;
+    private void MovePlayer()
+    {
+        velocity = orientation.right * horizontalInput + orientation.forward * verticalInput;
 
-        characterController.Move(move * speed * Time.deltaTime);
+        rb.AddForce(velocity.normalized * speed * 10f, ForceMode.Force);
+    }
 
-        bool isMoving = (x != 0 || z != 0);
+    private void PlayAnimation()
+    {
+        roket.SetActive(true);
+
+        bool isMoving = (horizontalInput != 0 || verticalInput != 0);
 
         if (isTutorial)
-        { 
+        {
             anim.SetBool("Idle", true);
             anim.SetBool("Walk", false);
             anim.SetBool("Run", false);
-            characterController.Move(Vector3.zero);
             return;
 
         }
@@ -61,37 +83,28 @@ public class PlayerMovement : MonoBehaviour
         {
             anim.SetBool("Idle", true);
             anim.SetBool("Walk", false);
-            anim.SetBool("Run",false);
+            anim.SetBool("Run", false);
             speed = 5;
         }
         else
         {
             anim.SetBool("Idle", false);
 
-            if (Input.GetKey(KeyCode.LeftShift)|| Input.GetMouseButton(1))
+            if (Input.GetKey(KeyCode.LeftShift) || Input.GetMouseButton(1))
             {
                 speed = 20;
-                anim.SetBool("Run",true);
+                anim.SetBool("Run", true);
                 roket.SetActive(false);
                 anim.SetBool("Walk", false);
-                
+
             }
             else
             {
                 speed = 5;
                 anim.SetBool("Walk", true);
                 anim.SetBool("Run", false);
-                
+
             }
         }
-
-        if (Input.GetButton("Jump") && isBottom)
-        {
-            velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
-        }
-
-        velocity.y += gravity * Time.deltaTime;
-
-        characterController.Move(velocity * Time.deltaTime);
     }
 }

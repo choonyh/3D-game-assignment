@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 208662791748520158}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.39788818, y: 1.0699997, z: -1.0299988}
+  m_LocalPosition: {x: -0.39788836, y: 1.0699997, z: -1.0300293}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -98,8 +98,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e51957205a216c4dba6373bc27363a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sensitivity: 0
-  playerBody: {fileID: 1721904436293077044}
+  sensitivityX: 0
+  sensitivityY: 0
+  orientation: {fileID: 0}
 --- !u!114 &1723772437829686950
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -698,16 +699,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ade143ef25e47c478eb1b120327d3ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterController: {fileID: 2807984896606855325}
   speed: 5
-  gravity: -9.81
-  jumpHeight: 3
-  anim: {fileID: 9205546105891649948}
-  groundCheck: {fileID: 1674356177960511584}
-  groundDistance: 0.2
-  groundMask:
+  orientation: {fileID: 0}
+  playerHeight: 0
+  ground:
     serializedVersion: 2
     m_Bits: 0
+  isGround: 0
+  groundDrag: 0
+  anim: {fileID: 9205546105891649948}
+  isTutorial: 0
 --- !u!82 &8712296238597448140
 AudioSource:
   m_ObjectHideFlags: 0
@@ -867,6 +868,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AnimationStateController
   anim: {fileID: 0}
+  roket: {fileID: 0}
+  isTutorial: 0
 --- !u!4 &2337050596612226502 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -5764316522323783143, guid: c5a285ab6aa8af04c9d9a431f60af34c, type: 3}

@@ -8,7 +8,7 @@ public class SettingManager : MonoBehaviour
 
     public float musicVolume = 1f;
     public float sfxVolume = 1f;
-    public float cameraSensitivity = 250f;
+    public float cameraSensitivity = 10f;
 
     void Awake()
     {
@@ -25,7 +25,7 @@ public class SettingManager : MonoBehaviour
     {
         musicVolume = PlayerPrefs.GetFloat("MusicVolume", 1f);
         sfxVolume = PlayerPrefs.GetFloat("SfxVolume", 1f);
-        cameraSensitivity = PlayerPrefs.GetFloat("CamSensitivity", 250f);
+        cameraSensitivity = PlayerPrefs.GetFloat("CamSensitivity", 10f);
     }
 
     public void SaveSettings()

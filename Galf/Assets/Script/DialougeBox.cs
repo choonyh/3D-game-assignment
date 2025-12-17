@@ -88,7 +88,6 @@ public class DialougeBox : MonoBehaviour
 
     public void ShowDialogueBox()
     {
-        Debug.Log($"DialogueBox: ShowDialogueBox called (index={index}, lines={lines.Length})");
         gameObject.SetActive(true);
         textComp.text = string.Empty;
         StartDialogue();
@@ -96,7 +95,9 @@ public class DialougeBox : MonoBehaviour
 
     public void LoadTutorial()
     {
-        StartCoroutine(Wait());
+        Debug.Log("This Runs");
+        SceneManager.LoadScene(4);
+        //StartCoroutine(Wait());
     }
 
     IEnumerator Wait()

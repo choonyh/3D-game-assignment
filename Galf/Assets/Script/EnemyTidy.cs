@@ -9,6 +9,7 @@ public class EnemyTidy : MonoBehaviour
     AudioSource audioSource;
     public AudioClip audioClip;
     bool isDead = false;
+    public ParticleSystem dieEffect;
 
     private void Start()
     {
@@ -36,9 +37,10 @@ public class EnemyTidy : MonoBehaviour
     {
         isDead = true;
 
-        transform.rotation = Quaternion.Euler(90f, 0f, 0f);
+        transform.rotation = Quaternion.Euler(75f, 0f, 0f);
 
         audioSource.clip = audioClip;
+        dieEffect.Play();
         audioSource.Play();
 
         StartCoroutine(DestroyAfterSound());
