@@ -3,7 +3,6 @@ using UnityEngine;
 public class AnimationStateController : MonoBehaviour
 {
     public Animator anim;
-    public GameObject roket;
     float turn = 0.0f;
     float turnVelocity = 0.0f;
     float horizontalInput;
@@ -37,7 +36,6 @@ public class AnimationStateController : MonoBehaviour
     }
     private void PlayAnimation()
     {
-        roket.SetActive(true);
 
         bool isMoving = (horizontalInput != 0 || verticalInput != 0);
 
@@ -62,7 +60,6 @@ public class AnimationStateController : MonoBehaviour
             if (Input.GetKey(KeyCode.LeftShift) || Input.GetMouseButton(1))
             {
                 anim.SetBool("Run", true);
-                roket.SetActive(false);
                 anim.SetBool("Walk", false);
 
             }

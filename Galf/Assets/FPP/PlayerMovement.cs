@@ -22,13 +22,10 @@ public class PlayerMovement : MonoBehaviour
 
     Vector3 velocity;
     public bool isTutorial;
-
-    private GameObject roket;
     
     //Move and then play animation
     private void Start()
     {
-        roket = GameObject.Find("Rocket Launcher");
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
     }
@@ -67,7 +64,6 @@ public class PlayerMovement : MonoBehaviour
 
     private void PlayAnimation()
     {
-        roket.SetActive(true);
 
         bool isMoving = (horizontalInput != 0 || verticalInput != 0);
 
@@ -94,7 +90,6 @@ public class PlayerMovement : MonoBehaviour
             {
                 speed = 20;
                 anim.SetBool("Run", true);
-                roket.SetActive(false);
                 anim.SetBool("Walk", false);
 
             }
