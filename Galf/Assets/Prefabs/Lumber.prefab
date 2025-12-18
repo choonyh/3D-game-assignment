@@ -5998,13 +5998,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d85ee6e632590244da9e4e2d30282e16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AiMove
-  player: {fileID: 0}
-  detectionRadius: 20
-  attackRadius: 1
+  detectPlayerRadius: 5
+  detectTreeRadius: 30
+  player: {fileID: 3474530052267854374, guid: 0d5ba32ea3c759948b2cd496cea16d37, type: 3}
+  treeLayer:
+    serializedVersion: 2
+    m_Bits: 64
   moveSpeed: 3
   rotationSpeed: 5
   attackCD: 1.1
+  attackRadius: 1
+  choppingRadius: 3
   damage: 10
+  chopDamage: 1
+  chopCD: 1
   anim: {fileID: 1601607824982921279}
 --- !u!4 &1268868282239087637 stripped
 Transform:

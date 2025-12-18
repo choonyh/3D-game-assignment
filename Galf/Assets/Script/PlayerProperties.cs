@@ -9,18 +9,24 @@ public class PlayerProperties : MonoBehaviour
     public int healthMax = 100;
     public int currentHP;
     public GameObject powerUp;
+    public HealthBar hpBar;
+    public UIManager manager;
 
     public bool isLost = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        
         currentHP = healthMax;
+        hpBar.SetMaxHealth(healthMax);
+        hpBar.SetHealth(currentHP);
     }
 
     public void TakeDamage(int damage)
     {
         currentHP = Mathf.Max(currentHP - damage,0);
+        hpBar.SetHealth(currentHP);
         if (currentHP <= 0)
         {
             isLost = true;
@@ -32,6 +38,6 @@ public class PlayerProperties : MonoBehaviour
     IEnumerator Wait()
     {
         yield return new WaitForSeconds(3);
-        SceneManager.LoadScene(5);//Lose scene
+        manager.LoadLoseScene();
     }
 }

@@ -50,7 +50,7 @@ public class AnimationStateController : MonoBehaviour
         if (!isMoving)
         {
             anim.SetBool("Idle", true);
-            anim.SetBool("Walk", false);
+            anim.SetBool("Walk", false); 
             anim.SetBool("Run", false);
         }
         else

@@ -1,12 +1,19 @@
 using System.Collections;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(AudioSource))]
 public class UIManager : MonoBehaviour
 {
     private int levelToLoad;
     [SerializeField] private AudioClip beep;
+    public GameObject pause;
+    public GameObject defeat;
+    //[SerializeField] private Button[] button;
+    //[SerializeField] private TextMeshProUGUI text;
+    //[SerializeField] private Image background;
 
     public void QuitBtnClicked()
     {
@@ -18,6 +25,7 @@ public class UIManager : MonoBehaviour
     void transition()
     {
         playBtnSound();
+        Time.timeScale = 1.0f;
         StartCoroutine(Wait());
     }
 
@@ -37,6 +45,7 @@ public class UIManager : MonoBehaviour
 
     public void PlayBtnClicked()
     {
+        Debug.LogError("Hello");
         levelToLoad = 3;
         transition();
     }
@@ -50,9 +59,33 @@ public class UIManager : MonoBehaviour
     public void BackClicked()
     {
         
-        Debug.Log("Hello");
+        Debug.LogError("Hello");
         levelToLoad = 1;
         transition();
     }
-    
+
+    public void ResumeClicked()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+        pause.SetActive(false);
+        Time.timeScale = 1.0f;
+        AudioListener.pause = false;
+        
+    }
+
+    public void Paused()
+    {
+        Cursor.lockState = CursorLockMode.Confined;
+        pause.SetActive(true);
+        Time.timeScale = 0.0f;
+        AudioListener.pause = true;
+    }
+
+    public void LoadLoseScene()
+    {
+        Cursor.lockState = CursorLockMode.Confined;
+        defeat.SetActive(true);
+        Time.timeScale = 0.0f;
+        AudioListener.pause = true;
+    }    
 }

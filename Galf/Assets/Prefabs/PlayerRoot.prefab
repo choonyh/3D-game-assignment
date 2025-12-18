@@ -25,12 +25,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2953616779858707728}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -467.4469, y: 105.119156, z: 416.18546}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -416.3956, y: 105.16115, z: -467.44708}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 5394747796774937064}
+  m_Father: {fileID: 3474530052267854374}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6052909997831383559
 MonoBehaviour:
@@ -47,8 +47,10 @@ MonoBehaviour:
   terrain: {fileID: 0}
   tree: {fileID: 8366488711614382082, guid: 3a4e8ac43566338479fa1676a1468d26, type: 3}
   treeCount: 30
-  minHeight: 5
-  maxSlope: 30
+  treeHP: 10
+  currentHealth: 0
+  isReserved: 0
+  reservedBy: {fileID: 0}
 --- !u!1 &5987728212103216480
 GameObject:
   m_ObjectHideFlags: 0
@@ -113,6 +115,7 @@ Transform:
   - {fileID: 3541209271919311257}
   - {fileID: 6594143202736135731}
   - {fileID: 5394747796774937064}
+  - {fileID: 4708880694928558754}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &8893351584323773802
@@ -409,9 +412,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1721904436293077044, guid: 18984d4d01675cc4b82d21914949a9b3, type: 3}
       insertIndex: 0
       addedObject: {fileID: 3098973269914513092}
-    - targetCorrespondingSourceObject: {fileID: 1721904436293077044, guid: 18984d4d01675cc4b82d21914949a9b3, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 4708880694928558754}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 2066798575666025102, guid: 18984d4d01675cc4b82d21914949a9b3, type: 3}
       insertIndex: -1
@@ -505,6 +505,7 @@ MonoBehaviour:
   _cinemachineTargetPitch: 0
   _cinemachineMouseSensitivityX: 0
   _cinemachineMouseSensitivityY: 0
+  isTutorial: 0
 --- !u!114 &8843397685282350571
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -588,6 +589,7 @@ MonoBehaviour:
   healthMax: 100
   currentHP: 0
   powerUp: {fileID: 0}
+  hpBar: {fileID: 0}
   isLost: 0
 --- !u!4 &5394747796774937064 stripped
 Transform:
